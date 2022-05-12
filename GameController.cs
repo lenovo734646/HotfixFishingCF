@@ -31,12 +31,14 @@ namespace Hotfix.FishingCF
 
         public override IEnumerator ShowLogin()
         {
-            return base.ShowLogin();
+			Debug.Log("ShowLogin()-----");
+			OpenView<ViewFishingScene>();
+			return base.ShowLogin();
         }
 
         IEnumerator DoLoadMainScene()
 		{
-			OpenView<ViewGameScene>();
+			//OpenView<ViewGameScene>();
 			yield return 0;
 		}
 

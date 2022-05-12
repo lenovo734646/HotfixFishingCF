@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using Hotfix.Common;
 using UnityEngine.SceneManagement;
 
 namespace Hotfix.FishingCF
@@ -21,11 +20,6 @@ namespace Hotfix.FishingCF
 			game = theGame;
 			conf.Init();
 			base.Start();
-
-			Debug.Log("进入热更！！！");
-			//加载主场景
-			//MyApp.LoadAssets<>
-			//SceneManager.LoadScene();
 
 		}
 	}

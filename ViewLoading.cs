@@ -47,7 +47,7 @@ namespace Hotfix.FishingCF
 
 		protected override void SetLoader()
 		{
-			LoadScene("Assets/Res/Games/FinshingCF/Scenes/LoginScene.unity", null);
+			LoadScene("Assets/Res/Games/FishingCF/Scenes/LoginScene.unity", null);
 		}
 
 		protected override IEnumerator OnResourceReady()
