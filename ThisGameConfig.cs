@@ -17,8 +17,6 @@ namespace Hotfix.FishingCF
 			betSet.Add(500000);
 			betSet.Add(1000000);
 			betSet.Add(5000000);
-
-			
 		}
 	}
 }

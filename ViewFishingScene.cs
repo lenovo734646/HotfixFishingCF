@@ -11,14 +11,17 @@ using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using UnityEngine;
 using UnityEngine.UI;
+using LitJson;
 
 namespace Hotfix.FishingCF
 {
-    public class ViewFishingScene : ViewMultiplayerScene
+    public class ViewFishingScene : ViewGameSceneBase
     {
         private GameObject canvas_gameobj;
-
+        //addr gameobject
         private AddressablesLoader.LoadTask<GameObject> canvas_;
+        //addr table
+        private AddressablesLoader.LoadTask<TextAsset> TLanguageErrcodeLoad_;
         private GameObject canvas_gobj;
 
         //-------一些基本变量-----------
@@ -36,77 +39,25 @@ namespace Hotfix.FishingCF
         //GameUI
         private GameObject gameUi_;
 
-        public ViewFishingScene()
+        public override void Start()
         {
-            var gm = (GameControllerMultiplayer)AppController.ins.currentApp.game;
-            gm.mainView = this;
+            base.Start();
         }
 
-        public override void OnBankDepositChanged(msg_banker_deposit_change msg)
+        public override void Update()
         {
-            //throw new NotImplementedException();
+            base.Update();
         }
 
-        public override void OnBankPromote(msg_banker_promote msg)
+        public override void Stop()
         {
-            //throw new NotImplementedException();
+            base.Stop();
         }
 
-        public override void OnGameInfo(msg_game_info msg)
+        public override void Close()
         {
-            //throw new NotImplementedException();
+            base.Close();
         }
-
-        public override void OnGameReport(msg_game_report msg)
-        {
-           // throw new NotImplementedException();
-        }
-
-        public override void OnGoldChange(msg_deposit_change2 msg)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public override void OnGoldChange(msg_currency_change msg)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public override void OnLastRandomResult(msg_last_random_base msg)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public override void OnMyBet(msg_my_setbet msg)
-        {
-           // throw new NotImplementedException();
-        }
-
-        public override void OnNetMsg(int cmd, string json)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public override void OnPlayerLeave(msg_player_leave msg)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public override void OnPlayerSetBet(msg_player_setbet msg)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public override void OnRandomResult(msg_random_result_base msg)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public override void OnStateChange(msg_state_change msg)
-        {
-            //throw new NotImplementedException();
-        }
-
         protected override void SetLoader()
         {
             LoadScene("Assets/Res/Games/FishingCF/Scenes/MainScene.unity", null);
@@ -116,7 +67,11 @@ namespace Hotfix.FishingCF
         {
             yield return base.OnResourceReady();
             LoadAssets<GameObject>("Assets/Res/Games/FishingCF/Prefabs/Canvas.prefab", t => { canvas_ = t; });
+            LoadAssets<TextAsset>("Table/LanguageErrcode.json", t => { TLanguageErrcodeLoad_ = t; });
+            
             yield return Globals.resLoader.WaitForAllTaskCompletion();
+            //JsonData jsonData = JsonMapper.ToObject(TLanguageErrcodeLoad_.Result.text);
+
             canvas_gobj = canvas_.Instantiate();
 
             selectRoomSys_ = canvas_gobj.FindChildDeeply(GlobalKeys.SelectRoomSys);
@@ -271,6 +226,11 @@ namespace Hotfix.FishingCF
                 child.gameObject.SetActive(!child.gameObject.activeSelf);
             }
 
+        }
+
+        public override void OnPlayerLeave(msg_player_leave msg)
+        {
+            throw new NotImplementedException();
         }
     }
 }

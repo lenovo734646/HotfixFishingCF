@@ -50,18 +50,24 @@ namespace Hotfix.FishingCF
 				yield return DoLoadMainScene();
 			}
 		}
-/*
-		public override msg_random_result_base CreateRandomResult(string json)
-		{
-			return JsonMapper.ToObject<msg_random_result_slwh>(json);
-		}
 
-		public override msg_last_random_base CreateLastRandom(string json)
-		{
-			return JsonMapper.ToObject<msg_last_random_slwh>(json);
-		}*/
+        public override void Update()
+        {
+            base.Update();
 
-		bool mainLoaded_ = false;
+        }
+        /*
+                public override msg_random_result_base CreateRandomResult(string json)
+                {
+                    return JsonMapper.ToObject<msg_random_result_slwh>(json);
+                }
+
+                public override msg_last_random_base CreateLastRandom(string json)
+                {
+                    return JsonMapper.ToObject<msg_last_random_slwh>(json);
+                }*/
+
+        bool mainLoaded_ = false;
 
 	}
 }
